@@ -14,9 +14,13 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    //Define and initialize the integers used in the application
-    int scoreFighterA = 0;
-    int scoreFighterB = 0;
+    //Define and initialize the integers and views used in the application
+    int scoreFighterA;
+    int scoreFighterB;
+    TextView scoreViewB;
+    TextView scoreViewA;
+    EditText nameA;
+    EditText nameB;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -41,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Initialize variables
+        scoreFighterA = 0;
+        scoreFighterB = 0;
+        scoreViewB = (TextView) findViewById(R.id.fighter_b_score);
+        scoreViewA = (TextView) findViewById(R.id.fighter_a_score);
+        nameA = findViewById(R.id.fighter_a);
+        nameB = findViewById(R.id.fighter_b);
     }
 
     @Override
@@ -71,13 +82,11 @@ public class MainActivity extends AppCompatActivity {
      * @return string of the name
      */
     private String getNameA() {
-        EditText name = findViewById(R.id.fighter_a);
-        return name.getText().toString();
+        return nameA.getText().toString();
     }
 
     private String getNameB() {
-        EditText name = findViewById(R.id.fighter_b);
-        return name.getText().toString();
+        return nameB.getText().toString();
     }
 
     /**
@@ -108,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
      * Displays the given score for Fighter A.
      */
     public void displayForFighterA(int score) {
-        TextView scoreViewA = (TextView) findViewById(R.id.fighter_a_score);
         scoreViewA.setText(String.valueOf(score));
     }
 
@@ -141,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
      * Displays the given score for Team B.
      */
     public void displayForFighterB(int score) {
-        TextView scoreViewB = (TextView) findViewById(R.id.fighter_b_score);
         scoreViewB.setText(String.valueOf(score));
     }
 
@@ -152,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
      * @return summaryMessage
      */
     private String createSummary(String winner, int totalScore) {
-        String summaryMessage = winner + " is awesome!";
-        summaryMessage = summaryMessage + "\n" + totalScore + " points!";
+        String summaryMessage = winner + getString(R.string.summary_message);
+        summaryMessage = summaryMessage + getString(R.string.summary_message_space) + totalScore + getString(R.string.summary_message_point);
         return summaryMessage;
     }
 
