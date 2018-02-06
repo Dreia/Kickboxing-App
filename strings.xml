@@ -7,4 +7,6 @@
     <string name="summary_message"> is awesome!</string>
     <string name="summary_message_point"> points!</string>
     <string name="summary_message_space">\n</string>
+    <string name="keyscoreA">fighter_A_current</string>
+    <string name="keyscoreB">fighter_B_current</string>
 </resources>

@@ -21,21 +21,25 @@ public class MainActivity extends AppCompatActivity {
     TextView scoreViewA;
     EditText nameA;
     EditText nameB;
+    String s1;
+    String s2;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         //Save the score
-        outState.putInt("fighter_A_current", scoreFighterA);
-        outState.putInt("fighter_B_current", scoreFighterB);
+        s1 = getString(R.string.keyscoreA);
+        s2 = getString(R.string.keyscoreB);
+        outState.putInt(s1, scoreFighterA);
+        outState.putInt(s2, scoreFighterB);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         //Restore information to the integers
-        scoreFighterA = savedInstanceState.getInt("fighter_A_current");
-        scoreFighterB = savedInstanceState.getInt("fighter_B_current");
+        scoreFighterA = savedInstanceState.getInt(s1);
+        scoreFighterB = savedInstanceState.getInt(s2);
         //Pass restored values to the TextViews.
         displayForFighterA(scoreFighterA);
         displayForFighterB(scoreFighterB);
@@ -141,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTenForFighterB(View v) {
         scoreFighterB += 10;
-
         displayForFighterB(scoreFighterB);
     }
 
