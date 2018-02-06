@@ -1,5 +1,6 @@
 package com.example.android.courtcounter;
 
+import android.animation.ArgbEvaluator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         //Restore information to the integers
         scoreFighterA = savedInstanceState.getInt("fighter_A_current");
         scoreFighterB = savedInstanceState.getInt("fighter_B_current");
+        //Pass restored values to the TextViews.
+        displayForFighterA(scoreFighterA);
+        displayForFighterB(scoreFighterB);
     }
 
     @Override
@@ -61,19 +66,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Get the opponents names.
+     * Checks EditText fighter_a and fighter_b
+     *
+     * @return string of the name
      */
-    public void opponentA() {
-        //Get user name
-        EditText mEdit = (EditText) findViewById(R.id.fighter_a);
-        String name = mEdit.getText().toString();
-
+    private String getNameA() {
+        EditText name = findViewById(R.id.fighter_a);
+        return name.getText().toString();
     }
 
-    public void opponentB() {
-        //Get user name
-        EditText mEdit = (EditText) findViewById(R.id.fighter_b);
-        String name = mEdit.getText().toString();
+    private String getNameB() {
+        EditText name = findViewById(R.id.fighter_b);
+        return name.getText().toString();
     }
 
     /**
@@ -129,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTenForFighterB(View v) {
         scoreFighterB += 10;
+
         displayForFighterB(scoreFighterB);
     }
 
@@ -141,9 +146,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Resets the score to 0.
+     * This method creates summary message
+     *
+     * @param winner
+     * @return summaryMessage
      */
-    public void reset(View v) {
+    private String createSummary(String winner, int totalScore) {
+        String summaryMessage = winner + " is awesome!";
+        summaryMessage = summaryMessage + "\n" + totalScore + " points!";
+        return summaryMessage;
+    }
+
+    /**
+     * Resets the score to 0 and displays winner in a toast message
+     */
+    public void winner(View v) {
+        String summaryMessage = "null";
+        String name = "null";
+        if (scoreFighterA > scoreFighterB) {
+            name = getNameA();
+            summaryMessage = createSummary(name, scoreFighterA);
+        } else {
+            if (scoreFighterA == scoreFighterB) {
+                summaryMessage = "It´ a draw";
+            } else {
+                name = getNameB();
+                summaryMessage = createSummary(name, scoreFighterB);
+            }
+        }
+        Toast.makeText(this, summaryMessage, Toast.LENGTH_LONG).show();
         scoreFighterA = 0;
         scoreFighterB = 0;
         displayForFighterA(scoreFighterA);
