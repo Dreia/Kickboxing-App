@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="left">24dp</dimen>
-    <dimen name="right">68dp</dimen>
+    <dimen name="d24">24dp</dimen>
+    <dimen name="d68">68dp</dimen>
     <dimen name="textbutton">16sp</dimen>
     <dimen name="padtop">16dp</dimen>
-    <dimen name="scoretext">56sp</dimen>
+    <dimen name="d8">8dp</dimen>
+    <dimen name="d0">0dp</dimen>
+    <dimen name="d9">9dp</dimen>
 </resources>

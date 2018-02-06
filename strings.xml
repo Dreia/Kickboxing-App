@@ -3,10 +3,14 @@
     <string name="addten">+10 Points</string>
     <string name="addnine">+9 Points</string>
     <string name="addeight">+8 Points</string>
-    <string name="reset">Winner</string>
+    <string name="winner">Winner</string>
     <string name="summary_message"> is awesome!</string>
     <string name="summary_message_point"> points!</string>
     <string name="summary_message_space">\n</string>
     <string name="keyscoreA">fighter_A_current</string>
     <string name="keyscoreB">fighter_B_current</string>
+    <string name="button_hint_b">Fighter B</string>
+    <string name="hint_button_a">Fighter A</string>
+    <string name="textscore">0</string>
+    <string name="summary_message_draw">It´ a draw</string>
 </resources>

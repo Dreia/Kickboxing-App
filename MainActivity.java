@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             summaryMessage = createSummary(name, scoreFighterA);
         } else {
             if (scoreFighterA == scoreFighterB) {
-                summaryMessage = "It´ a draw";
+                summaryMessage = getString(R.string.summary_message_draw);
             } else {
                 name = getNameB();
                 summaryMessage = createSummary(name, scoreFighterB);
